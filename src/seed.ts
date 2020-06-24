@@ -22,6 +22,6 @@ createConnection().then(async connection => {
   c1.post = p1;
   c1.content = 'Awesome!';
   await manager.save(c1);
-  connection.close();
+  await connection.close();
   console.log('OK!')
 }).catch(error => console.log(error));
