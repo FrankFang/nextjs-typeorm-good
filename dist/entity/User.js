@@ -25,10 +25,6 @@ var _initializerWarningHelper2 = _interopRequireDefault(require("@babel/runtime/
 
 var _typeorm = require("typeorm");
 
-var _Post = require("./Post");
-
-var _Comment = require("./Comment");
-
 var _getDatabaseConnection = require("../../lib/getDatabaseConnection");
 
 var _md = _interopRequireDefault(require("md5"));
@@ -37,15 +33,7 @@ var _lodash = _interopRequireDefault(require("lodash"));
 
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _temp;
 
-var User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)('increment'), _dec3 = (0, _typeorm.Column)('varchar'), _dec4 = (0, _typeorm.Column)('varchar'), _dec5 = (0, _typeorm.CreateDateColumn)(), _dec6 = (0, _typeorm.UpdateDateColumn)(), _dec7 = (0, _typeorm.OneToMany)(function (type) {
-  return _Post.Post;
-}, function (post) {
-  return post.author;
-}), _dec8 = (0, _typeorm.OneToMany)(function (type) {
-  return _Comment.Comment;
-}, function (comment) {
-  return comment.user;
-}), _dec9 = (0, _typeorm.BeforeInsert)(), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function () {
+var User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)('increment'), _dec3 = (0, _typeorm.Column)('varchar'), _dec4 = (0, _typeorm.Column)('varchar'), _dec5 = (0, _typeorm.CreateDateColumn)(), _dec6 = (0, _typeorm.UpdateDateColumn)(), _dec7 = (0, _typeorm.OneToMany)('Post', 'author'), _dec8 = (0, _typeorm.OneToMany)('Comment', 'user'), _dec9 = (0, _typeorm.BeforeInsert)(), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function () {
   function User() {
     (0, _classCallCheck2["default"])(this, User);
     (0, _initializerDefineProperty2["default"])(this, "id", _descriptor, this);

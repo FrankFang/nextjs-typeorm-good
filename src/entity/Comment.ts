@@ -16,10 +16,10 @@ export class Comment {
   id: number;
   @Column('text')
   content: string;
-  // @ManyToOne(type => User, user => user.comments)
-  // user: User;
-  // @ManyToOne(type => Post, post => post.comments)
-  // post: Post;
+  @ManyToOne('User', 'comments')
+  user: User;
+  @ManyToOne('Post', 'comments')
+  post: Post;
   @CreateDateColumn()
   createdAt: Date;
   @UpdateDateColumn()
