@@ -11,6 +11,11 @@ const Posts: NextApiHandler = withSession(async (req, res) => {
     post.title = title;
     post.content = content;
     const user = req.session.get('currentUser');
+    if (!user) {
+      res.statusCode = 401;
+      res.end();
+      return;
+    }
     post.author = user;
     const connection = await getDatabaseConnection();
     await connection.manager.save(post);

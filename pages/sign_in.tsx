@@ -3,6 +3,7 @@ import axios, {AxiosResponse} from 'axios';
 import {withSession} from '../lib/withSession';
 import {User} from '../src/entity/User';
 import {useForm} from '../hooks/useForm';
+import qs from 'query-string';
 
 const SignIn: NextPage<{ user: User }> = (props) => {
   const {form} = useForm({
@@ -14,7 +15,12 @@ const SignIn: NextPage<{ user: User }> = (props) => {
     buttons: <button type="submit">登录</button>,
     submit: {
       request: formData => axios.post(`/api/v1/sessions`, formData),
-      message: '登录成功'
+      success: () => {
+        window.alert('登录成功');
+        const query = qs.parse(window.location.search);
+        window.location.href = query.returnTo.toString();
+
+      }
     }
   });
   return (
@@ -38,7 +44,7 @@ export const getServerSideProps: GetServerSideProps = withSession(
     const user = context.req.session.get('currentUser');
     return {
       props: {
-        user: JSON.parse(JSON.stringify(user))
+        user: JSON.parse(JSON.stringify(user || ''))
       }
     };
   });

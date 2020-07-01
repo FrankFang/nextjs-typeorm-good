@@ -12,7 +12,7 @@ const SignUp: NextPage = () => {
     buttons: <button type="submit">注册</button>,
     submit: {
       request: formData => axios.post(`/api/v1/users`, formData),
-      message: '注册成功'
+      success: ()=>window.alert('注册成功')
     }
   });
   return (
