@@ -42,10 +42,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const query = qs.parse(search);
   const page = parseInt(query.page?.toString()) || 1;
   const connection = await getDatabaseConnection();// 第一次链接能不能用 get
-  const perPage = 1;
+  const perPage = 10;
   const [posts, count] = await connection.manager.findAndCount(Post,
     {skip: (page - 1) * perPage, take: perPage});
-  console.log(posts);
   const ua = context.req.headers['user-agent'];
   const result = new UAParser(ua).getResult();
   return {
