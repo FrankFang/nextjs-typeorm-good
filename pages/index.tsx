@@ -18,6 +18,10 @@ const Home: NextPage = () => {
         align-items: center;
         flex-direction: column;
       }
+      .cover > img{
+        width: 120px; 
+        height: 120px;
+      }
       `}</style>
     </>
   );
