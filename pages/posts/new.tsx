@@ -6,10 +6,12 @@ const PostsNew: NextPage = () => {
   const {form} = useForm({
     initFormData: {title: '', content: ''},
     fields: [
-      {label: '标题', type: 'text', key: 'title'},
+      {label: '大标题', type: 'text', key: 'title'},
       {label: '内容', type: 'textarea', key: 'content'},
     ],
-    buttons: <button type="submit">提交</button>,
+    buttons: <div className="actions">
+      <button type="submit">提交</button>
+    </div>,
     submit: {
       request: formData => axios.post(`/api/v1/posts`, formData),
       success: () => {
@@ -30,6 +32,15 @@ const PostsNew: NextPage = () => {
       .postsNew .field-content textarea{
         height: 20em; 
         resize: none;
+      }
+      .postsNew .label-text{
+        width: 4em;
+        text-align:right;
+      }
+      .postsNew .actions{
+        text-align:center;
+        background: #ddd;
+        padding: 4px 0;
       }
       `}</style>
     </div>
