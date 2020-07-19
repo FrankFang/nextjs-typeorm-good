@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import 'styles/global.scss'
+import 'github-markdown-css'
 import {useEffect} from 'react'
 
 export default function App({Component, pageProps}) {
