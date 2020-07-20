@@ -1,3 +1,4 @@
+echo 'start';
 docker start 98a &&
 cd /home/blog/app/ &&
 git pull &&
