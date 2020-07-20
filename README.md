@@ -48,7 +48,9 @@ npm run dev
 ## 部署
 
 ```bash 
+yarn install --production=false
 yarn build
-yarn start
+docker build -t fang/node-web-app .
+docker run --network=host -p 3000:3000 -d fang/node-web-app
 ```
 
